@@ -559,7 +559,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	// password len expected between 6 and 10
 	// this is a CPU optimization
 	minPasswordLen = 6;
-	maxPasswordLen = 10;
+	maxPasswordLen = 16;
+	printf("Using min password length = %d and max password length = %d\r\n",minPasswordLen, maxPasswordLen);
 	if (!GetNTLMChallengeAndResponse())
 	{
 		printf("Unable to Get NTLM Challenge And Response\r\n");
@@ -568,7 +569,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf("Use SSPI to get a valid NTLM challenge/response and test passwords\r\n");
 	printf("vincent.letoux@mysmartlogon.com\r\n");
 	printf("\r\n");
-	printf("[+] got NTLM challenge/response\r\n", dwClientChallengeSize);
+	printf("[+] got NTLM challenge/response\r\n");
 
 	DWORD passwordInBuffer = 0;
 	WCHAR passwords[MAX_CONFIGURABLE_PASSWORD_LEN][MAX_CONFIGURABLE_PASSWORD_LEN] = {0};
@@ -577,7 +578,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	BOOL fContinue = TRUE;
 	HANDLE hStdIn = GetStdHandle(STD_INPUT_HANDLE);
 
-	while(fContinue)    
+	while(fContinue)
     {
         CHAR c = 0;
 		DWORD dwRead = 0;
